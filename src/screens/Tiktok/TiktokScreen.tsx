@@ -1,14 +1,16 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {View} from 'react-native';
+import React, {useRef} from 'react';
+import {VideoRef} from 'react-native-video';
+import Player from '../../components/Player';
 
 const TiktokScreen = () => {
+  const ref = useRef<VideoRef>(null);
+
   return (
-    <View>
-      <Text>TiktokScreen</Text>
+    <View style={{flex: 1}}>
+      <Player ref={ref} />
     </View>
   );
 };
 
 export default TiktokScreen;
-
-const styles = StyleSheet.create({});
