@@ -21,6 +21,13 @@ import ic_share_strock from './../../assets/svgs/ic_share_strock.svg';
 import ic_share from './../../assets/svgs/ic_share.svg';
 import ic_sign from './../../assets/svgs/ic_sign.svg';
 import ic_tick from './../../assets/svgs/ic_tick.svg';
+import ic_angry from './../../assets/svgs/ic_angry.svg';
+import ic_care from './../../assets/svgs/ic_care.svg';
+import ic_haha from './../../assets/svgs/ic_haha.svg';
+import ic_like from './../../assets/svgs/ic_like.svg';
+import ic_love from './../../assets/svgs/ic_love.svg';
+import ic_sad from './../../assets/svgs/ic_sad.svg';
+import ic_wow from './../../assets/svgs/ic_wow.svg';
 
 export const AppAssets = {
   IMG_HANH_01: require('./../../assets/images/img_hanh_01.png'),
@@ -50,4 +57,11 @@ export const AppAssets = {
   ic_share,
   ic_sign,
   ic_tick,
+  ic_angry,
+  ic_care,
+  ic_haha,
+  ic_like,
+  ic_love,
+  ic_sad,
+  ic_wow,
 };
