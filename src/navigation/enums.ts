@@ -10,4 +10,10 @@ enum STACKS {
   TIKTOK_STACK = 'TiktokStack',
 }
 
-export {STACKS, TABS};
+enum SCREEN {
+  CHOOSE_SCREEN = 'ChooseScreen',
+  REEL_SCREEN = 'ReelScreen',
+  TIKTOK_SCREEN = 'TiktokScreen',
+}
+
+export {STACKS, TABS, SCREEN};

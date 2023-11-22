@@ -11,13 +11,15 @@ import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
-import React, {useCallback} from 'react';
-import {TABS} from './enums';
-import {TabParamsList} from './types';
+import React, { useCallback } from 'react';
+import { SCREEN, TABS } from './enums';
+import { TabParamsList } from './types';
 import ReelStack from './stacks/ReelStack';
 import TiktokStack from './stacks/TiktokStack';
-import {ROUTER} from './router';
+import { ROUTER } from './router';
 import SplashScreen from '../screens/Auth/SplashScreen';
+import ChooseScreen from '../screens/ChooseScreen/ChooseScreen';
+import TiktokScreen from '../screens/Tiktok/TiktokScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,8 +48,8 @@ const AppNavigators = () => {
       navigation: any;
     }): BottomTabNavigationOptions => {
       return {
-        headerShown: false,
         ...bottomTabItemOption(props.route.name),
+        headerShown: false,
       };
     },
     [],
@@ -59,7 +61,7 @@ const AppNavigators = () => {
 
   const nonBottomTabOptions: NativeStackNavigationOptions = {};
 
-  const onStateChange = async () => {};
+  const onStateChange = async () => { };
 
   const Tabs = useCallback(
     () => (
@@ -72,14 +74,14 @@ const AppNavigators = () => {
   );
 
   const NonBottomTab = (
-    <>
-      <Stack.Screen name={ROUTER.SplashScreen} component={SplashScreen} />
-    </>
+    <Stack.Screen name={ROUTER.SplashScreen} component={SplashScreen} />
   );
 
   return (
     <NavigationContainer ref={navigationRef} onStateChange={onStateChange}>
       <Stack.Navigator screenOptions={stackDefaultOptions}>
+        <Stack.Screen name={SCREEN.CHOOSE_SCREEN} component={ChooseScreen} />
+        <Stack.Screen name={SCREEN.TIKTOK_SCREEN} component={TiktokScreen} />
         <Stack.Screen name={TABS.BOTTOM_TABS} component={Tabs} />
         <Stack.Group screenOptions={nonBottomTabOptions}>
           {NonBottomTab}
