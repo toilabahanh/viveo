@@ -20,7 +20,7 @@ export default function ChooseScreen() {
 
   return (
     <ImageBackground
-      source={AppAssets.IMG_HANH_02}
+      source={AppAssets.IMG_BG}
       style={{
         flex: 1,
         justifyContent: 'center',

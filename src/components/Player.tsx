@@ -25,7 +25,7 @@ const Player = forwardRef<Ref, IPlayer>((props, ref) => {
       <Video
         ref={ref}
         source={{
-          uri: 'https://vod-progressive.akamaized.net/exp=1700103507~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2712%2F21%2F538561465%2F2552299725.mp4~hmac=ce6a8570496c96c35549988cb59d83c23a6d83b128af5e6f4673e4fd21c7a4c4/vimeo-prod-skyfire-std-us/01/2712/21/538561465/2552299725.mp4?download=1&filename=pexels-mart-production-7565438+%281080p%29.mp4',
+          uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
           isNetwork: true,
         }}
         onLoad={e => {

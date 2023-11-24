@@ -1,27 +1,34 @@
-import {StyleSheet, Text, View, useWindowDimensions} from 'react-native';
+import {
+  Dimensions,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import React from 'react';
 import {FlashList} from '@shopify/flash-list';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import Video from 'react-native-video';
+import {useDimension} from '../../hooks/useDimension';
+import Avatar from '../../components/Avatar';
 
-const Avatar = () => {
-  const SIZE = 40;
-  return (
-    <View
-      style={{
-        backgroundColor: '#f48',
-        width: SIZE,
-        height: SIZE,
-        borderRadius: 100,
-      }}
-    />
-  );
-};
+const DATA = [
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+];
 
-const Item = () => {
+const Item = ({data, index}) => {
+  const {landscape, deviceWidth} = useDimension();
+
   return (
-    <View>
+    <View key={index} style={{paddingVertical: 8}}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <View style={{flexDirection: 'row'}}>
-          <Avatar />
+          <Avatar uri="https://picsum.photos/500" />
           <View>
             <View style={{flexDirection: 'row'}}>
               <Text>Title </Text>
@@ -38,10 +45,23 @@ const Item = () => {
           <Text>ic_close</Text>
         </View>
       </View>
-      <Text numberOfLines={2}>Content 2 line</Text>
-      <View style={{height: 250, backgroundColor: '#f93'}}>
-        <Text>Video</Text>
-      </View>
+      <Text numberOfLines={2}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla facere
+        tempore explicabo sunt. Exercitationem omnis corporis ex odit quam atque
+        laudantium id saepe repudiandae soluta, commodi cumque voluptatibus,
+        eius aliquam.
+      </Text>
+      <Video
+        key={`${index}-${Math.random()}`}
+        source={{
+          uri: data,
+          isNetwork: true,
+        }}
+        style={{
+          height: landscape.height,
+          width: landscape.width,
+        }}
+      />
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <View style={{flexDirection: 'row'}}>
           <Text>ic_like</Text>
@@ -64,11 +84,11 @@ const Item = () => {
 };
 
 const ReelScreen = () => {
-  const DATA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const {width} = useWindowDimensions();
+  const {deviceWidth} = useDimension();
+  const insets = useSafeAreaInsets();
 
   const renderItem = ({item, index}) => {
-    return <Item />;
+    return <Item data={item} index={index} />;
   };
 
   return (
@@ -80,16 +100,15 @@ const ReelScreen = () => {
       bounces
       bouncesZoom
       estimatedItemSize={200}
-      estimatedListSize={{height: DATA.length * 300, width}}
+      // estimatedListSize={{height: DATA.length * 300, width: deviceWidth}}
       ItemSeparatorComponent={() => (
-        <View style={{height: 20, backgroundColor: '#f05'}} />
+        <View style={{height: 20, backgroundColor: 'black'}} />
       )}
       onBlankArea={e => {
         console.log('e: ', e);
       }}
-      onScroll={e => {
-        console.log('e: ', e.nativeEvent);
-      }}>
+      contentInset={insets}
+      showsVerticalScrollIndicator={false}>
       <Text>ReelScreen</Text>
     </FlashList>
   );

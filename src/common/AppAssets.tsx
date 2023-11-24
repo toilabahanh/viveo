@@ -30,6 +30,7 @@ import ic_sad from './../../assets/svgs/ic_sad.svg';
 import ic_wow from './../../assets/svgs/ic_wow.svg';
 
 export const AppAssets = {
+  IMG_BG: require('./../../assets/images/img_bg.jpg'),
   IMG_HANH_01: require('./../../assets/images/img_hanh_01.png'),
   IMG_HANH_02: require('./../../assets/images/img_hanh_02.png'),
   IMG_HANH_03: require('./../../assets/images/img_hanh_03.png'),
